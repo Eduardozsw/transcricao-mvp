@@ -3,7 +3,7 @@ import whisper
 from io import BytesIO
 from pydub import AudioSegment
 from vosk import Model, KaldiRecognizer
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI, UploadFile, File, Form
 import json
 
 app = FastAPI()
@@ -26,7 +26,7 @@ async def converter_para_wav(files_bytes: bytes) -> BytesIO:
 
 # Endpoint para transcrição
 @app.post("/vosk")
-async def transcrever_vosk(file: UploadFile = File(...)):
+async def transcrever_vosk(file: UploadFile = File(...), idioma: str = Form(...)):
     conteudo = await file.read()
     wav_audio = await converter_para_wav(conteudo)
 
