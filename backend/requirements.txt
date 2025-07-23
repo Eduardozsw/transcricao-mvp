@@ -4,3 +4,4 @@ pydub
 vosk
 torch
 openai-whisper
+python-multipart

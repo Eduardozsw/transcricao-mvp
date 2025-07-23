@@ -1,13 +1,27 @@
+import os
 import wave
+import json
 import whisper
 from io import BytesIO
 from pydub import AudioSegment
 from vosk import Model, KaldiRecognizer
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, UploadFile, File, Form
-import json
 
 app = FastAPI()
-model = Model("modelo\\PT-BR")  # modelo vosk
+
+origins = [
+    "http://localhost:3000"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 model_whisper = whisper.load_model("base") # modelo whisper
 
 @app.get("/")
@@ -27,9 +41,20 @@ async def converter_para_wav(files_bytes: bytes) -> BytesIO:
 # Endpoint para transcrição
 @app.post("/vosk")
 async def transcrever_vosk(file: UploadFile = File(...), idioma: str = Form(...)):
+    print(f"[LOG] Idioma recebido no backend: '{idioma}'")
     conteudo = await file.read()
     wav_audio = await converter_para_wav(conteudo)
 
+    if idioma == "ptbr":
+        model_path = os.path.abspath("modelo/ptbr")
+    elif idioma == "en":
+        model_path = os.path.abspath("modelo/en")
+    elif idioma == "inen":
+        model_path = os.path.abspath("modelo/InEn")
+    else:
+        return {"error": "Idioma não suportado"}
+    
+    model = Model(model_path)
     resultado = []
 
     with wave.open(wav_audio, "rb") as wf:
