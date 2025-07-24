@@ -20,7 +20,7 @@ export async function handleUpload(
     }
 
     const data = await response.json();
-    return data.text;
+    return data.transcricao;
   } catch (error) {
     console.error(`Erro no upload:`, error);
     return null
