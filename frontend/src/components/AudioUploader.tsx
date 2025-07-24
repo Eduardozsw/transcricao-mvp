@@ -29,24 +29,25 @@ export default function AudioUploader() {
         onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)}
       />
 
-      <div>
+      <div className="mt-5">
         <label className="font-bold text-white ">Idioma:</label>
         <select className="bg-transparent active:bg-transparent  text-white" value={idioma} onChange={(e) => setIdioma(e.target.value)}>
-          <option value="ptbr">Português</option>
-          <option value="en">Inglês</option>
-          <option value="inen">Inglês sotaque Indiano</option>
+          <option className="text-black" value="ptbr">Português</option>
+          <option className="text-black" value="en">Inglês</option>
+          <option className="text-black" value="inen">Inglês sotaque Indiano</option>
         </select>
       </div>
 
-      <div className="gap-x-20">
+      <div className="mt-5">
         <label className="text-white text-2xl" >
           <input
+            className=""
             type="radio"
             checked={engine === "vosk"}
             onChange={() => setEngine("vosk")} />
           Vosk
         </label>
-        <label className="text-white text-2xl">
+        <label className="text-white text-2xl ml-5">
           <input
             type="radio"
             checked={engine === "whisper"}
@@ -56,7 +57,7 @@ export default function AudioUploader() {
         </label>
       </div>
 
-      <button onClick={enviar} disabled={loading} className="bg-white border-b-4 border-b-gray-300 active:border-b-0 p-2 rounded-2xl">
+      <button onClick={enviar} disabled={loading} className="bg-white border-b-4 border-b-gray-300 active:border-b-0 p-2 rounded-2xl mt-5">
         {loading ? "Enviando..." : "Enviar"}
       </button>
 
