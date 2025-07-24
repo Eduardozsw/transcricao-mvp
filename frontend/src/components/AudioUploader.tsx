@@ -38,7 +38,7 @@ export default function AudioUploader() {
         </select>
       </div>
 
-      <div className="mt-5">
+      <div className="">
         <label className="text-white text-2xl" >
           <input
             className=""
