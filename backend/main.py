@@ -83,6 +83,6 @@ async def transcrever_whisper(file: UploadFile = File(...)):
     with open("temp.wav", "wb") as f:
         f.write(wav_audio.read())
 
-    resultado = model_whisper.transcribe("temp.wav", language="pt")
+    transcricao = model_whisper.transcribe("temp.wav", language="pt")
 
-    return {"nome": file.filename, "transcricao": resultado["text"]}
+    return {"nome": file.filename, "transcricao": transcricao["text"]}
