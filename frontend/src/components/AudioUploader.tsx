@@ -6,45 +6,47 @@ export default function AudioUploader() {
   const [file, setFile] = useState<File | null>(null);
   const [idioma, setIdioma] = useState("ptbr")
   const [engine, setEngine] = useState<"vosk" | "whisper">("vosk")
-  const [transcricao, setTranscicao] = useState<string | null>(null)
+  const [transcricao, setTranscricao] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
   async function enviar() {
     if (!file) return alert("Por favor, insira um arquivo para continuar.")
     setLoading(true)
+    
     const texto = await handleUpload(file, idioma, engine)
-    setTranscicao(texto)
+    console.log("Texto recebido:", texto)
+    setTranscricao(texto)
     setLoading(false)
   }
-
   return (
-    <div>
-      <h1>Enviar áudio para transcrição</h1>
+    <div className="">
+      <h1 className="font-bold text-3xl text-white pb-10">Enviar áudio para transcrição</h1>
 
       <input
+        className="font-bold border-b-4 border-b-gray-300 active:border-b-0  rounded-2xl p-2 bg-white"
         type="file"
         accept="audio/"
         onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)}
       />
 
       <div>
-        <label htmlFor="">Idioma:</label>
-        <select value={idioma} onChange={(e) => setIdioma(e.target.value)}>
+        <label className="font-bold text-white ">Idioma:</label>
+        <select className="bg-transparent active:bg-transparent  text-white" value={idioma} onChange={(e) => setIdioma(e.target.value)}>
           <option value="ptbr">Português</option>
           <option value="en">Inglês</option>
           <option value="inen">Inglês sotaque Indiano</option>
         </select>
       </div>
 
-      <div>
-        <label>
+      <div className="gap-x-20">
+        <label className="text-white text-2xl" >
           <input
             type="radio"
             checked={engine === "vosk"}
             onChange={() => setEngine("vosk")} />
           Vosk
         </label>
-        <label>
+        <label className="text-white text-2xl">
           <input
             type="radio"
             checked={engine === "whisper"}
@@ -54,7 +56,7 @@ export default function AudioUploader() {
         </label>
       </div>
 
-      <button onClick={enviar} disabled={loading}>
+      <button onClick={enviar} disabled={loading} className="bg-white border-b-4 border-b-gray-300 active:border-b-0 p-2 rounded-2xl">
         {loading ? "Enviando..." : "Enviar"}
       </button>
 
