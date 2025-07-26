@@ -9,7 +9,6 @@ export default function vosk() {
 
         <p className="max-w-100 text-center">Maior velocidade nas suas transcrições porém menos precisão. Considere assinar o <a href="/whisper" className="text-blue-300 underline">premium</a> para uma transcrição mais precisa</p>
       </div>
-      
       <VoskAudioUploader />
     </main>
   )
