@@ -87,4 +87,5 @@ async def transcrever_whisper(file: UploadFile = File(...)):
 
     transcricao = model_whisper.transcribe("temp.wav")
 
+    os.remove("temp.wav")
     return {"nome": file.filename, "transcricao": transcricao["text"]}
