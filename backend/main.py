@@ -11,7 +11,9 @@ from fastapi import FastAPI, UploadFile, File, Form
 app = FastAPI()
 
 origins = [
-    "http://localhost:3000"
+    "http://localhost:3000",
+    "http://localhost:3000/vosk",
+    "http://localhost:3000/whisper"
 ]
 
 app.add_middleware(
@@ -79,10 +81,11 @@ async def transcrever_vosk(file: UploadFile = File(...), idioma: str = Form(...)
 async def transcrever_whisper(file: UploadFile = File(...)):
     conteudo = await file.read()
     wav_audio = await converter_para_wav(conteudo)
-
+    
     with open("temp.wav", "wb") as f:
         f.write(wav_audio.read())
 
-    transcricao = model_whisper.transcribe("temp.wav", language="pt")
+    transcricao = model_whisper.transcribe("temp.wav")
 
+    os.remove("temp.wav")
     return {"nome": file.filename, "transcricao": transcricao["text"]}
