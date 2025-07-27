@@ -7,7 +7,7 @@ export default function About() {
   return (
     <main className="bg-gray-100 py-10">
       <div className="flex justify-center">
-        <h1 className='text-black text-3xl font-bold'>Como funciona</h1>
+        <h1 className='text-black text-3xl font-bold py-5'>Como funciona</h1>
       </div>
 
       <div className="flex flex-wrap justify-around mt-15">
@@ -32,9 +32,11 @@ export default function About() {
           <p>WMA</p>
           <p>MP3</p>
           <p>OGG</p>
+          <p>MP4</p>
+          <p>WAV</p>
         </div>
-        <div className="w-1/3 text-center">
-          <h1>Através de uma tecnologia para reconhecimento de fala, o nosso sistema é capaz de transcrever seus áudios de maneira rápida </h1>
+        <div className="w-1/3 text-center justify-center flex">
+          <h1 className="max-w-90">Através de uma tecnologia para reconhecimento de fala, o nosso sistema é capaz de transcrever seus áudios de maneira rápida. Assim conseguimos oferecer o <b>Menor</b> preço do mercado.</h1>
         </div>
         <div className="w-1/3 text-center">
           <h1>*Colocar tipos de arquivos disponiveis pra baixar*</h1>
