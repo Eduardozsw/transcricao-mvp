@@ -18,7 +18,7 @@ export default function Porque() {
               <Image src={money} alt="alt" width={50} />
               <h1 className="text-2xl">Preço</h1>
             </div>
-            <p>O nosso site possui o menor preço do mercado. Qual o preço? R$ 10 reais por hora de transcrição.</p>
+            <p>O nosso site possui o menor preço do mercado. Qual o preço? R$ 50 reais por hora de transcrição, assim você economiza 362%</p>
           </div>
 
           <div className="">
