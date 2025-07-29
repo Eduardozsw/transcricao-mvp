@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import { ClerkProvider, SignedIn, SignedOut, SignIn } from "@clerk/nextjs";
+import Footer from "@/components/Footer";
 
 
 const inter = Inter({
@@ -22,17 +23,14 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-
-      <html lang="ptbr">
-        <body className={`${inter.className} ${inter.className} antialiased`}>
-          <SignedOut>
-              <SignIn routing="hash"/>
-            </SignedOut>
-          <SignedIn>
-            <Navbar />
+      <html lang="pt-BR">
+        <body className={`${inter.className} antialiased`}>
+          <Navbar />
+          
 
             {children}
-          </SignedIn>
+          
+          <Footer/>
         </body>
       </html>
     </ClerkProvider>
