@@ -1,12 +1,13 @@
 "use client"
 
-import { UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignOutButton, UserButton } from "@clerk/nextjs";
 import { FileAudio, Home, Mic } from "lucide-react"
 import Link from "next/link";
 import { useState } from "react";
 
 export default function Navbar() {
   const [activeTab, setActiveTab] = useState<'home' | 'transcribe'>('home')
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -21,7 +22,7 @@ export default function Navbar() {
               <button
                 onClick={() => setActiveTab('home')}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${activeTab === 'home'
-                  ? 'bg-blue-100 text-blue-600 '
+                  ? 'bg-blue-100 text-blue-600 cursor-pointer'
                   : 'text-gray-700 hover:text-blue-600 cursor-pointer'
                   }`}
               >
@@ -33,7 +34,7 @@ export default function Navbar() {
               <button
                 onClick={() => setActiveTab('transcribe')}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${activeTab === 'transcribe'
-                  ? 'bg-blue-100 text-blue-600'
+                  ? 'bg-blue-100 text-blue-600 cursor-pointer'
                   : 'text-gray-700 hover:text-blue-600 cursor-pointer'
                   }`}
               >
@@ -44,15 +45,36 @@ export default function Navbar() {
           </nav>
           <div>
 
-            <Link href="/vosk">
-              <button
-                onClick={() => setActiveTab('transcribe')}
-                className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors cursor-pointer"
-              >
-                Começar Agora
-              </button>
-            </Link>
-            <UserButton showName />
+            <SignedOut>
+              <Link href="/sign-in">
+
+                <button
+                  onClick={() => { }}
+                  className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors cursor-pointer"
+                >
+                  Começar Agora
+                </button>
+              </Link>
+            </SignedOut>
+            {isDropdownOpen && (
+              <div className="absolute right-0 top-12 bg-white shadow-lg border rounded-md w-48 py-2 z-50">
+                <SignedIn>
+                  <UserButton showName afterSwitchSessionUrl="/" />
+                </SignedIn>
+                <Link href={"/dashboard"}>
+                  Minhas Transcrições
+                </Link>
+                <Link href={"/configuracoes"}>
+                  Configurações
+                </Link>
+                <button
+                  onClick={() => SignOutButton}
+                  className="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100"
+                >
+                  Sair
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
