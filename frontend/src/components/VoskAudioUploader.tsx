@@ -17,7 +17,6 @@ export default function VoskAudioUploader() {
   const [idioma, setIdioma] = useState("ptbr")
   const [transcricao, setTranscricao] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
-  const [isTranscribing, setIsTranscribing] = useState(false);
   const [dragActive, setDragActive] = useState(false);
 
   const handleFileSelect = (file: File) => {
@@ -49,39 +48,6 @@ export default function VoskAudioUploader() {
     if (e.target.files && e.target.files[0]) {
       handleFileSelect(e.target.files[0]);
     }
-  };
-
-  const startTranscription = async () => {
-    if (!file) return;
-
-    setIsTranscribing(true);
-
-    // Simulação de transcrição (substitua pela sua API real)
-    setTimeout(() => {
-      const mockTranscription = `Esta é uma transcrição simulada do arquivo "${file.name}". 
-      
-Em um projeto real, aqui seria exibido o resultado da transcrição do seu arquivo de áudio. A transcrição seria processada por uma API de reconhecimento de voz que converteria o áudio em texto.
-
-O arquivo foi processado no idioma: ${getLanguageName(idioma)}
-
-Duração estimada: ${Math.floor(Math.random() * 30 + 5)} minutos
-Precisão: 95.2%
-
-Este é apenas um exemplo de como o resultado seria apresentado ao usuário após o processamento completo do arquivo de áudio.`;
-
-      setTranscricao(mockTranscription);
-      setIsTranscribing(false);
-    }, 3000);
-  };
-
-  const getLanguageName = (code: string) => {
-    const languages: { [key: string]: string } = {
-      'ptBR': 'Português (Brasil)',
-      'en': 'Inglês (EUA)',
-      'inen': 'Inglês com sotaque indiano',
-      
-    };
-    return languages[code] || code;
   };
 
   const downloadTranscription = () => {
@@ -197,10 +163,10 @@ Este é apenas um exemplo de como o resultado seria apresentado ao usuário apó
               {/* Botão de Transcrição */}
               <button
                 onClick={enviar}
-                disabled={isTranscribing}
+                disabled={loading}
                 className="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
               >
-                {isTranscribing ? (
+                {loading ? (
                   <>
                     <Loader2 className="h-5 w-5 animate-spin" />
                     Transcrevendo...
