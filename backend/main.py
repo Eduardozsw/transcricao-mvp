@@ -24,7 +24,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-model_whisper = whisper.load_model("base") # modelo whisper
+model_whisper = whisper.load_model("tiny") # modelo whisper
 
 @app.get("/")
 def home():
