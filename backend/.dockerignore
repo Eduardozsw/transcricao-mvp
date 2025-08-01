@@ -1,0 +1,15 @@
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.swp
+.env
+.git
+.gitignore
+.vscode
+node_modules
+dist
+build
+*.log
+venv
+modelo
