@@ -2,9 +2,6 @@ import React from 'react';
 import { Play } from 'lucide-react';
 import Link from 'next/link';
 
-interface HeroSectionProps {
-  onStartTranscription: () => void;
-}
 export default function Hero() {
   return (
     <section className="bg-gradient-to-br from-blue-50 to-indigo-100 py-20">
