@@ -75,7 +75,7 @@ export default function VoskAudioUploader() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Transcreva Seu Áudio
+            Use o Vosk para transcrever
           </h1>
           <p className="text-xl text-gray-600">
             Faça upload do seu arquivo e receba a transcrição em minutos
