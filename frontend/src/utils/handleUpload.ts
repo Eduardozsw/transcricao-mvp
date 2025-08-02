@@ -12,7 +12,7 @@ export async function handleUpload(
 
 
   try {
-    const response = await fetch(`${baseUrl}/${endpoint}`, {
+    const response = await fetch(`${baseUrl}${endpoint}`, {
       method: "POST",
       body: formData,
     });
