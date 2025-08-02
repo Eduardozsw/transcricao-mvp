@@ -3,26 +3,28 @@ export async function handleUpload(
   idioma: string,
   engine: "vosk" | "whisper"
 ) {
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000";
   const formData = new FormData();
-  formData.append("file", file)
-  formData.append("idioma", idioma)
+  formData.append("file", file);
+  formData.append("idioma", idioma);
 
-  const endpoint = engine === "vosk" ? "vosk" : "whisper"
+  const endpoint = engine === "vosk" ? "vosk" : "whisper";
+
 
   try {
-    const response = await fetch(`http://127.0.0.1:8000/${endpoint}`, {
+    const response = await fetch(`${baseUrl}/${endpoint}`, {
       method: "POST",
       body: formData,
     });
 
     if (!response.ok) {
-      throw new Error(`Erro ao enviar áudio:${response.statusText}`);
+      throw new Error(`Erro ao enviar áudio: ${response.statusText}`);
     }
 
     const data = await response.json();
     return data.transcricao;
   } catch (error) {
-    console.error(`Erro no upload:`, error);
-    return null
+    console.error("Erro no upload:", error);
+    return null;
   }
 }

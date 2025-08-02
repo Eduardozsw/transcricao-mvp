@@ -5,7 +5,7 @@ import { Download, FileAudio, Loader2, Mic, Shield, Star, Upload, Zap } from "lu
 
 export default function WhisperAudioUploader() {
   const [file, setFile] = useState<File | null>(null);
-  const [idioma, setIdioma] = useState("ptbr")
+  const idioma = "ptbr"
   const [transcricao, setTranscricao] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
   const [dragActive, setDragActive] = useState(false);

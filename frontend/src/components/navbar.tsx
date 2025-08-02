@@ -1,7 +1,8 @@
 "use client"
 
-import { SignedIn, SignedOut, SignOutButton, UserButton, useUser } from "@clerk/nextjs";
-import { ChevronDown, FileAudio, Home, Mic, User } from "lucide-react"
+import { SignedIn, SignedOut, SignOutButton, useUser } from "@clerk/nextjs";
+import { ChevronDown, FileAudio, Home, Mic } from "lucide-react"
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -62,7 +63,8 @@ export default function Navbar() {
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   className="flex items-center gap-2 p-2 rounded hover:bg-gray-100"
                 >
-                  <img src={user?.imageUrl} alt="Avatar" className="w-8 h-8 rounded-full" />
+                  
+                  <Image src={user?.imageUrl ?? ""} alt="Avatar" className="w-8 h-8 rounded-full" />
                   <ChevronDown className="w-4 h-4" />
                 </button>
 
