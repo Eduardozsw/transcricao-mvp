@@ -11,8 +11,9 @@ export async function handleUpload(
   const endpoint = engine === "vosk" ? "vosk" : "whisper";
 
 
-    try {
+  try {
     const url = `${baseUrl.replace(/\/$/, '')}/${endpoint.replace(/^\//, '')}`;
+    console.log(url)
 
     const response = await fetch(url, {
       method: "POST",
