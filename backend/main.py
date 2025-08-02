@@ -42,7 +42,7 @@ async def converter_para_wav(files_bytes: bytes) -> BytesIO:
     return wav_io
 
 # Endpoint para transcrição
-@app.post("vosk")
+@app.post("/vosk")
 async def transcrever_vosk(file: UploadFile = File(...), idioma: str = Form(...)):
     print(f"[LOG] Idioma recebido no backend: '{idioma}'")
     conteudo = await file.read()
@@ -78,7 +78,7 @@ async def transcrever_vosk(file: UploadFile = File(...), idioma: str = Form(...)
     transcricao = " ".join(resultado)
     return {"nome": file.filename, "transcricao": transcricao}
 
-@app.post("whisper")
+@app.post("/whisper")
 async def transcrever_whisper(file: UploadFile = File(...)):
     conteudo = await file.read()
     wav_audio = await converter_para_wav(conteudo)
