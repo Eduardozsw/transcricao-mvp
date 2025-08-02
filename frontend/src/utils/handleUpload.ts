@@ -3,7 +3,7 @@ export async function handleUpload(
   idioma: string,
   engine: "vosk" | "whisper"
 ) {
-  const baseUrl = "https://transcricao-mvp-z6yc.vercel.app";
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000";
   const formData = new FormData();
   formData.append("file", file);
   formData.append("idioma", idioma);
@@ -11,8 +11,10 @@ export async function handleUpload(
   const endpoint = engine === "vosk" ? "vosk" : "whisper";
 
 
-  try {
-    const response = await fetch(`${baseUrl.replace(/\/$/, '')}/${endpoint.replace(/^\//, '')}`, {
+    try {
+    const url = `${baseUrl.replace(/\/$/, '')}/${endpoint.replace(/^\//, '')}`;
+
+    const response = await fetch(url, {
       method: "POST",
       body: formData,
     });
