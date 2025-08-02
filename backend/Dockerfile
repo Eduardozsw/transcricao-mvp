@@ -13,13 +13,13 @@ RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
 # Copia apenas o requirements primeiro (melhor uso de cache)
-COPY requirements.txt .
+COPY backend/requirements.txt .
 
 # Instala dependências Python
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copia o restante do código
-COPY . .
+COPY backend/. .
 
 # Expõe a porta usada pela API
 EXPOSE 8000
