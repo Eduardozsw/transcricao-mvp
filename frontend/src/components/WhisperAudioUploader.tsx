@@ -52,7 +52,6 @@ export default function WhisperAudioUploader() {
   };
 
   async function enviar() {
-    console.log("Está enviando")
     if (!file) return alert("Por favor, insira um arquivo para continuar.")
     setLoading(true)
     const engine = "whisper"
