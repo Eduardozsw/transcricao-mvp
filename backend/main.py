@@ -14,9 +14,9 @@ origins = [
     "http://localhost:3000",
     "http://localhost:3000/vosk",
     "http://localhost:3000/whisper",
-    "https://transcricao-mvp-z6yc.vercel.app",
-    "https://transcricao-mvp-z6yc.vercel.app/vosk",
-    "https://transcricao-mvp-z6yc.vercel.app/whisper"
+    "https://www.transcrevia.com.br/",
+    "https://www.transcrevia.com.br//vosk",
+    "https://www.transcrevia.com.br//whisper"
 ]
 
 app.add_middleware(
