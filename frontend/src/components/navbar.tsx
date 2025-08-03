@@ -64,7 +64,7 @@ export default function Navbar() {
                   className="flex items-center gap-2 p-2 rounded hover:bg-gray-100"
                 >
                   
-                  <Image src={user?.imageUrl ?? ""} alt="Avatar" className="w-8 h-8 rounded-full" />
+                  <Image src={user?.imageUrl ?? ""} width={30} height={30} alt="Avatar" className="w-8 h-8 rounded-full" />
                   <ChevronDown className="w-4 h-4" />
                 </button>
 
