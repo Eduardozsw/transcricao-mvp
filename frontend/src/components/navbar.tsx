@@ -17,7 +17,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-2">
             <Mic className="h-8 w-8 text-blue-600" />
-            <span className="text-2xl font-bold text-gray-900">Transcrevia</span>
+            <a href="/"><span className="text-2xl font-bold text-gray-900">Transcrevia</span></a>
           </div>
           <nav className="hidden md:flex space-x-8 items-center">
             <Link href="/">
@@ -71,7 +71,7 @@ export default function Navbar() {
                 {isDropdownOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-md z-50">
                     <div className="px-4 py-2">{user?.fullName}</div>
-                    <a href="/dashboard" className="block px-4 py-2 hover:bg-gray-100">Dashboard</a>
+                    <a href="/whisper" className="block px-4 py-2 hover:bg-gray-100">Whisper</a>
                     <a href="/configuracoes" className="block px-4 py-2 hover:bg-gray-100">Configurações</a>
                     <SignOutButton>
                       <button className="w-full text-left px-4 py-2 hover:bg-gray-100">Sair</button>
