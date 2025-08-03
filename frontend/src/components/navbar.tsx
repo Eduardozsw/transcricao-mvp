@@ -17,7 +17,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-2">
             <Mic className="h-8 w-8 text-blue-600" />
-            <a href="/"><span className="text-2xl font-bold text-gray-900">Transcrevia</span></a>
+            <Link href={"/"}><span className="text-2xl font-bold text-gray-900">Transcrevia</span></Link>
           </div>
           <nav className="hidden md:flex space-x-8 items-center">
             <Link href="/">
