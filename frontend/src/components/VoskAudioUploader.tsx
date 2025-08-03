@@ -101,6 +101,7 @@ export default function VoskAudioUploader() {
               <p className="text-gray-600 mb-6">
                 Ou clique para selecionar um arquivo
               </p>
+              <p className='font-semibold text-gray-900 mb-2'>*Limite de 500mb por arquivo*</p>
               <input
                 type="file"
                 accept="audio/*,video/*,.mp3,.wav,.m4a,.mp4,.mov,.avi"
