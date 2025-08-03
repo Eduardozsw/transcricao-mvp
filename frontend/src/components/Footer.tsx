@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center space-x-2 mb-4 md:mb-0">
             <Mic className="h-8 w-8 text-blue-400" />
-            <span className="text-2xl font-bold">Transkritor</span>
+            <span className="text-2xl font-bold">Transcrevia</span>
           </div>
           <div className="text-gray-400 text-center md:text-right">
             <p>&copy; 2025 Transkritor. Todos os direitos reservados.</p>

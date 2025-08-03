@@ -13,7 +13,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Transkritor",
+  title: "Transcrevia",
   description: "Site para transcrever áudio em texto",
 };
 
