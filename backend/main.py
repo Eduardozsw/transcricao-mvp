@@ -75,6 +75,9 @@ async def converter_para_wav(files_bytes: bytes) -> BytesIO:
     wav_io.seek(0)
     return wav_io
 
+@app.get("/")
+def read_root():
+    return {"message": "Servidor online"}
 
 # Endpoint para transcrição
 @app.post("/vosk")
