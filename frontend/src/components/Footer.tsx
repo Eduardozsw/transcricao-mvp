@@ -11,7 +11,7 @@ export default function Footer() {
             <span className="text-2xl font-bold">Transcrevia</span>
           </div>
           <div className="text-gray-400 text-center md:text-right">
-            <p>&copy; 2025 Transkritor. Todos os direitos reservados.</p>
+            <p>&copy; 2025 Transcrevia. Todos os direitos reservados.</p>
             <p className="text-sm mt-2">Transformando áudio em texto com precisão</p>
           </div>
         </div>
