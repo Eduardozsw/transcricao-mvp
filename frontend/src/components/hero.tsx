@@ -16,7 +16,7 @@ export default function Hero() {
             precisão incomparável e velocidade que impressiona. Experimente agora mesmo!
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <div className="flex  sm:flex-row gap-4 justify-center mb-12">
             <Link href="/vosk">
               <button
                 className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 flex items-center justify-center gap-2 cursor-pointer"
