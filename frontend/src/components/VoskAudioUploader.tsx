@@ -14,7 +14,7 @@ import { handleUpload } from "../utils/handleUpload";
 
 export default function VoskAudioUploader() {
   const [file, setFile] = useState<File | null>(null);
-  const [idioma, setIdioma] = useState("ptbr")
+  const [idioma, setIdioma] = useState("pt")
   const [transcricao, setTranscricao] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
   const [dragActive, setDragActive] = useState(false);

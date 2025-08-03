@@ -124,6 +124,8 @@ export default function Prepago() {
           <p className="text-sm text-gray-500">Cancele a qualquer momento • Sem taxas ocultas • Suporte incluído</p>
         </div>
       </div>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3279646860404629"
+     crossOrigin="anonymous"></script>
     </section>
   )
 }
