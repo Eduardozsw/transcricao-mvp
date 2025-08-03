@@ -11,47 +11,48 @@ export default function WhisperAudioUploader() {
   const [dragActive, setDragActive] = useState(false);
 
   const handleFileSelect = (file: File) => {
-      setFile(file);
-      setTranscricao('');
-    };
-  
-    const handleDrag = (e: React.DragEvent) => {
-      e.preventDefault();
-      e.stopPropagation();
-      if (e.type === "dragenter" || e.type === "dragover") {
-        setDragActive(true);
-      } else if (e.type === "dragleave") {
-        setDragActive(false);
-      }
-    };
-  
-    const handleDrop = (e: React.DragEvent) => {
-      e.preventDefault();
-      e.stopPropagation();
+    setFile(file);
+    setTranscricao('');
+  };
+
+  const handleDrag = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setDragActive(true);
+    } else if (e.type === "dragleave") {
       setDragActive(false);
-  
-      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-        handleFileSelect(e.dataTransfer.files[0]);
-      }
-    };
-  
-    const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (e.target.files && e.target.files[0]) {
-        handleFileSelect(e.target.files[0]);
-      }
-    };
-  
-    const downloadTranscription = () => {
-      const element = document.createElement('a');
-      const blob = new Blob([transcricao ?? ''], { type: "text/plain" });
-      element.href = URL.createObjectURL(blob);
-      element.download = `transcricao_${file ? file.name.split('.')[0] : 'arquivo'}.txt`;
-      document.body.appendChild(element);
-      element.click();
-      document.body.removeChild(element);
-    };
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      handleFileSelect(e.dataTransfer.files[0]);
+    }
+  };
+
+  const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      handleFileSelect(e.target.files[0]);
+    }
+  };
+
+  const downloadTranscription = () => {
+    const element = document.createElement('a');
+    const blob = new Blob([transcricao ?? ''], { type: "text/plain" });
+    element.href = URL.createObjectURL(blob);
+    element.download = `transcricao_${file ? file.name.split('.')[0] : 'arquivo'}.txt`;
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  };
 
   async function enviar() {
+    console.log("Está enviando")
     if (!file) return alert("Por favor, insira um arquivo para continuar.")
     setLoading(true)
     const engine = "whisper"

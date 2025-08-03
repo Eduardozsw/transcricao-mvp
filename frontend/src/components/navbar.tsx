@@ -17,7 +17,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-2">
             <Mic className="h-8 w-8 text-blue-600" />
-            <span className="text-2xl font-bold text-gray-900">Transkritor</span>
+            <span className="text-2xl font-bold text-gray-900">Transcrevia</span>
           </div>
           <nav className="hidden md:flex space-x-8 items-center">
             <Link href="/">
@@ -64,7 +64,7 @@ export default function Navbar() {
                   className="flex items-center gap-2 p-2 rounded hover:bg-gray-100"
                 >
                   
-                  <Image src={user?.imageUrl ?? ""} alt="Avatar" className="w-8 h-8 rounded-full" />
+                  <Image src={user?.imageUrl ?? ""} width={30} height={30} alt="Avatar" className="w-8 h-8 rounded-full" />
                   <ChevronDown className="w-4 h-4" />
                 </button>
 

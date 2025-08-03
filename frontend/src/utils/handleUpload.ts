@@ -3,7 +3,8 @@ export async function handleUpload(
   idioma: string,
   engine: "vosk" | "whisper"
 ) {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000";
+  console.log("Chegou no Handleupload")
+  const baseURL = "https://fastapi-backend-6s4c.onrender.com";
   const formData = new FormData();
   formData.append("file", file);
   formData.append("idioma", idioma);
@@ -12,7 +13,13 @@ export async function handleUpload(
 
 
   try {
-    const response = await fetch(`${baseUrl}/${endpoint}`, {
+    console.log("Entrou no try")
+    const url = `${baseURL}/${endpoint}`;
+    console.log("baseUrl:", baseURL);
+    console.log("endpoint:", endpoint);
+    console.log("URL final:", `${baseURL}/${endpoint}`);
+
+    const response = await fetch(url, {
       method: "POST",
       body: formData,
     });

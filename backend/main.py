@@ -13,7 +13,10 @@ app = FastAPI()
 origins = [
     "http://localhost:3000",
     "http://localhost:3000/vosk",
-    "http://localhost:3000/whisper"
+    "http://localhost:3000/whisper",
+    "https://transcricao-mvp-z6yc.vercel.app",
+    "https://transcricao-mvp-z6yc.vercel.app/vosk",
+    "https://transcricao-mvp-z6yc.vercel.app/whisper"
 ]
 
 app.add_middleware(

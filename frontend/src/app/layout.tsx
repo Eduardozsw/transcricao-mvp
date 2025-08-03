@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import { ClerkProvider } from "@clerk/nextjs";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/next"
 
 const clerkPubKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
@@ -13,7 +14,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Transkritor",
+  title: "Transcrevia",
   description: "Site para transcrever áudio em texto",
 };
 
@@ -31,7 +32,8 @@ export default function RootLayout({
 
             {children}
           
-          <Footer/>
+          <Footer />
+          <Analytics/>
         </body>
       </html>
     </ClerkProvider>
