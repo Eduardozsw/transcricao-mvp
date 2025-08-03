@@ -13,7 +13,9 @@ export async function handleUpload(
 
   try {
     const url = `${baseUrl.replace(/\/$/, '')}/${endpoint.replace(/^\//, '')}`;
-    console.log(url)
+    console.log("baseUrl:", baseUrl);
+    console.log("endpoint:", endpoint);
+    console.log("URL final:", `${baseUrl.replace(/\/$/, '')}/${endpoint.replace(/^\//, '')}`);
 
     const response = await fetch(url, {
       method: "POST",
