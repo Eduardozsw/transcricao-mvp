@@ -14,9 +14,9 @@ origins = [
     "http://localhost:3000",
     "http://localhost:3000/vosk",
     "http://localhost:3000/whisper",
-    "https://www.transcrevia.com.br/",
-    "https://www.transcrevia.com.br//vosk",
-    "https://www.transcrevia.com.br//whisper"
+    "https://www.transcrevia.com.br",
+    "https://www.transcrevia.com.br/vosk",
+    "https://www.transcrevia.com.br/whisper"
 ]
 
 app.add_middleware(
