@@ -35,7 +35,7 @@
 - [Next.js](https://nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Clerk](https://clerk.dev/)
-- [TypeScript, React Hook Form, Zod]
+- [TypeScript, React]
 
 ---
 
@@ -43,7 +43,7 @@
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/seu-usuario/transcrevia.git
+git clone https://github.com/Eduardozsw/transcricao-mvp.git
 cd transcrevia
 ```
 
@@ -86,7 +86,7 @@ transcrevia/
 
 - UI loading state and feedback
 - Transcription history per user
-- Option to export transcript (TXT, PDF)
+- Option to export transcript (TXT)
 - Real-time transcription with websockets
 
 ---
@@ -100,4 +100,4 @@ Pull requests are welcome! If you’d like to suggest a feature or report a bug,
 ## 🧑‍💻 Author
 
 **Carlos Eduardo**  
-🔗 [LinkedIn](https://www.linkedin.com/in/...)
+🔗 [LinkedIn](https://www.linkedin.com/in/carloseduardossm/)
