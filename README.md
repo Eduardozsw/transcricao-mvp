@@ -30,6 +30,7 @@
 - [OpenAI Whisper](https://github.com/openai/whisper)
 - [Pydub](https://github.com/jiaaro/pydub)
 - [Requests, Wave, JSON, Threading, etc.]
+- docker
 
 ### Frontend
 - [Next.js](https://nextjs.org/)
