@@ -1,14 +1,14 @@
 "use client"
 
 import { SignedIn, SignedOut, SignOutButton, useUser } from "@clerk/nextjs";
-import { ChevronDown, FileAudio, Home, Mic } from "lucide-react"
+import { ChevronDown, FileAudio, Home, Mic, User } from "lucide-react"
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
 export default function Navbar() {
   const { user } = useUser();
-  const [activeTab, setActiveTab] = useState<'home' | 'transcribe'>('home')
+  const [activeTab, setActiveTab] = useState<'home' | 'vosk' | 'whisper'>('home')
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   return (
@@ -34,14 +34,26 @@ export default function Navbar() {
             </Link>
             <Link href="/vosk">
               <button
-                onClick={() => setActiveTab('transcribe')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${activeTab === 'transcribe'
+                onClick={() => setActiveTab('vosk')}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${activeTab === 'vosk'
                   ? 'bg-blue-100 text-blue-600 cursor-pointer'
                   : 'text-gray-700 hover:text-blue-600 cursor-pointer'
                   }`}
               >
                 <FileAudio className="h-4 w-4" />
-                Transcrever
+                Vosk
+              </button>
+            </Link>
+            <Link href="/whisper">
+              <button
+                onClick={() => setActiveTab('whisper')}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${activeTab === 'whisper'
+                  ? 'bg-blue-100 text-blue-600 cursor-pointer'
+                  : 'text-gray-700 hover:text-blue-600 cursor-pointer'
+                  }`}
+              >
+                <FileAudio className="h-4 w-4" />
+                Whisper
               </button>
             </Link>
           </nav>
@@ -57,32 +69,33 @@ export default function Navbar() {
                 </button>
               </Link>
             </SignedOut>
-              <div className="relative inline-block text-left">
-            <SignedIn>
+            <div className="relative inline-block text-left">
+              <SignedIn>
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   className="flex items-center gap-2 p-2 rounded hover:bg-gray-100"
                 >
-                  
-                  <Image src={user?.imageUrl ?? ""} width={30} height={30} alt="Avatar" className="w-8 h-8 rounded-full" />
+                  <User
+                    width={30}
+                    height={30}
+                    className="w-8 h-8 rounded-full"
+                  />
                   <ChevronDown className="w-4 h-4" />
                 </button>
 
                 {isDropdownOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-md z-50">
                     <div className="px-4 py-2">{user?.fullName}</div>
-                    <a href="/whisper" className="block px-4 py-2 hover:bg-gray-100">Whisper</a>
-                    <a href="/configuracoes" className="block px-4 py-2 hover:bg-gray-100">Configurações</a>
                     <SignOutButton>
                       <button className="w-full text-left px-4 py-2 hover:bg-gray-100">Sair</button>
                     </SignOutButton>
                   </div>
                 )}
-            </SignedIn>
+              </SignedIn>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </header >
   );
 }
