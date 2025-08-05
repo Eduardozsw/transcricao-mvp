@@ -66,7 +66,6 @@ export default function VoskAudioUploader() {
     setLoading(true)
     const engine = "vosk"
     const texto = await handleUpload(file, idioma, engine)
-    console.log("Texto recebido:", texto)
     setTranscricao(texto)
     setLoading(false)
   }
@@ -155,9 +154,8 @@ export default function VoskAudioUploader() {
                   onChange={(e) => setIdioma(e.target.value)}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
-                  <option value="ptBR">Português (Brasil)</option>
+                  <option value="pt">Português (Brasil)</option>
                   <option value="en">Inglês (EUA)</option>
-                  <option value="inen">Inglês com sotaque indiano</option>
                 </select>
               </div>
 

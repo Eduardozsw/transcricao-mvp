@@ -56,7 +56,6 @@ export default function WhisperAudioUploader() {
     setLoading(true)
     const engine = "whisper"
     const texto = await handleUpload(file, idioma, engine)
-    console.log("Texto recebido:", texto)
     setTranscricao(texto)
     setLoading(false)
   }
