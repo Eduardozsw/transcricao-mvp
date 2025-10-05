@@ -1,14 +1,13 @@
-from fastapi import FastAPI, UploadFile, File, Form, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from transcribers.vosk import transcribe_vosk
-from transcribers.whisper import transcribe_whisper
+from transcribers.vosk import transcribe_vosk_endpoint
+from transcribers.whisper import transcribe_whisper_endpoint
 
 app = FastAPI()
 
 origins = [
     "http://localhost:3000",
     "https://www.transcrevia.com.br"
-    
 ]
 
 app.add_middleware(
@@ -23,20 +22,6 @@ app.add_middleware(
 def read_root():
     return {"message": "Servidor online"}
 
-@app.post("/upload")
-async def upload(
-    file: UploadFile = File(...),
-    engine: str = Form(...),
-    idioma: str = Form("Pt")
-):
-    conteudo = await file.read()
-    if len(conteudo) > 200 * 1024 * 1024:
-        raise HTTPException(status_code=503, detail="Arquivo excedeu o limite de 500MB")
-    if engine == "whisper":
-        texto = await transcribe_whisper(conteudo)
-    elif engine == "vosk":
-        texto = await transcribe_vosk(conteudo, idioma)
-    else:
-        raise HTTPException(status_code=400, detail="Engine inválido")
-    
-    return {"nome": file.filename, "transcrição": texto}
+# Import and include your engine-specific endpoints
+app.include_router(transcribe_vosk_endpoint)
+app.include_router(transcribe_whisper_endpoint)
