@@ -8,6 +8,9 @@ export default function WhisperAudioUploader() {
   const idioma = "ptbr"
   const [transcricao, setTranscricao] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
+  const [progress, setProgress] = useState<number | undefined>(undefined)
+  const [status, setStatus] = useState<string | undefined>(undefined)
+  const [position, setPosition] = useState<number | null | undefined>(undefined)
   const [dragActive, setDragActive] = useState(false);
 
   const handleFileSelect = (file: File) => {
@@ -55,7 +58,11 @@ export default function WhisperAudioUploader() {
     if (!file) return alert("Por favor, insira um arquivo para continuar.")
     setLoading(true)
     const engine = "whisper"
-    const texto = await handleUpload(file, idioma, engine)
+    const texto = await handleUpload(file, idioma, engine, ({ progress, status, position }) => {
+      if (typeof progress !== 'undefined') setProgress(progress)
+      if (typeof status !== 'undefined') setStatus(status)
+      if (typeof position !== 'undefined') setPosition(position)
+    })
     setTranscricao(texto)
     setLoading(false)
   }
@@ -142,7 +149,7 @@ export default function WhisperAudioUploader() {
                 {loading ? (
                   <>
                     <Loader2 className="h-5 w-5 animate-spin" />
-                    Transcrevendo...
+                    {status === 'processing' ? 'Transcrevendo...' : 'Na fila...'}
                   </>
                 ) : (
                   <>
@@ -151,6 +158,19 @@ export default function WhisperAudioUploader() {
                   </>
                 )}
               </button>
+
+              {loading && (
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <div className="text-sm text-gray-700">
+                    {typeof position === 'number' && status !== 'processing' && (
+                      <div>Posição na fila: {position}</div>
+                    )}
+                    {typeof progress === 'number' && (
+                      <div>Progresso: {progress.toFixed(0)}%</div>
+                    )}
+                  </div>
+                </div>
+              )}
 
               {/* Resultado da Transcrição */}
               {transcricao && (

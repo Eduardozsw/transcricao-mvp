@@ -5,3 +5,5 @@ vosk
 torch
 openai-whisper
 python-multipart
+requests
+redis

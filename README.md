@@ -52,9 +52,32 @@ cd transcrevia
 ```bash
 cd backend
 python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
+source venv/bin/activate  # Windows: venv\Scripts\activate.bat
 pip install -r requirements.txt
 uvicorn main:app --reload
+```
+Precisa rodar o redis-server pois eu separei os worker do vosk e whisper do resto do código então seria também.
+Em um WSL (Ubuntu) vai rodar os seguintes comandos
+```bash
+# update packages
+sudo apt update
+
+# install redis server
+sudo apt install -y redis-server
+
+# start redis
+sudo service redis-server start
+
+# check status
+sudo service redis-server status
+
+# test with redis-cli
+redis-cli ping    # should print: PONG
+```
+Após a confirmação Pong, você deve criar outros 2 terminais para rodar os seguintes comandos dentro da pasta transcribers
+```bash
+python whisper_worker.py
+python vosk_worker.py
 ```
 
 ### 3. Frontend Setup
